@@ -88,16 +88,16 @@ fun WeatherInformationResponseModel.toEntity() =
     WeatherInformationEntity(
         cityId = id,
         cityName = name,
-        coord = coordModel.toEntity(),
-        weatherList = WeatherListHolderModel(weatherModel).toEntity(),
+        coord = coord.toEntity(),
+        weatherList = WeatherListHolderModel(weather).toEntity(),
         base = base,
-        main = mainModel.toEntity(),
+        main = main.toEntity(),
         visibility = visibility,
-        wind = windModel.toEntity(),
-        rain = rainModel.toEntity(),
-        clouds = cloudsModel.toEntity(),
+        wind = wind.toEntity(),
+        rain = rain.toEntity(),
+        clouds = clouds.toEntity(),
         dt = dt,
-        sys = sysModel.toEntity(),
+        sys = sys.toEntity(),
         timezone = timezone,
         cod = cod
     )
