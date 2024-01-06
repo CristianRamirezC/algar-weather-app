@@ -1,14 +1,8 @@
 package com.example.algarweatherapp.data.database
 
 import androidx.room.TypeConverter
-import com.example.algarweatherapp.data.model.Clouds
-import com.example.algarweatherapp.data.model.Coord
-import com.example.algarweatherapp.data.model.Main
-import com.example.algarweatherapp.data.model.Rain
-import com.example.algarweatherapp.data.model.Sys
-import com.example.algarweatherapp.data.model.Weather
-import com.example.algarweatherapp.data.model.WeatherListHolder
-import com.example.algarweatherapp.data.model.Wind
+import com.example.algarweatherapp.data.database.entities.WeatherEntity
+import com.example.algarweatherapp.data.database.entities.WeatherListHolderEntity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -16,26 +10,26 @@ class WeatherConverter {
 
 
     @TypeConverter
-    fun toWeatherListHolder(weatherListString: String): WeatherListHolder {
-        val type = object : TypeToken<WeatherListHolder>() {}.type
+    fun toWeatherListHolder(weatherListString: String): WeatherListHolderEntity {
+        val type = object : TypeToken<WeatherListHolderEntity>() {}.type
         return Gson().fromJson(weatherListString, type)
     }
 
     @TypeConverter
-    fun fromWeatherListHolder(weatherList: WeatherListHolder): String {
-        val type = object : TypeToken<WeatherListHolder>() {}.type
+    fun fromWeatherListHolder(weatherList: WeatherListHolderEntity): String {
+        val type = object : TypeToken<WeatherListHolderEntity>() {}.type
         return Gson().toJson(weatherList, type)
     }
 
     @TypeConverter
-    fun toWeatherList(weatherListString: String): List<Weather> {
-        val type = object : TypeToken<List<Weather>>() {}.type
+    fun toWeatherList(weatherListString: String): List<WeatherEntity> {
+        val type = object : TypeToken<List<WeatherEntity>>() {}.type
         return Gson().fromJson(weatherListString, type)
     }
 
     @TypeConverter
-    fun fromWeatherList(weatherList: List<Weather>): String {
-        val type = object : TypeToken<List<Weather>>() {}.type
+    fun fromWeatherList(weatherList: List<WeatherEntity>): String {
+        val type = object : TypeToken<List<WeatherEntity>>() {}.type
         return Gson().toJson(weatherList, type)
     }
 
