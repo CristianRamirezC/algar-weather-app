@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,9 +8,11 @@ plugins {
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+
 android {
     namespace = "com.example.algarweatherapp"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.example.algarweatherapp"
@@ -18,6 +22,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "OPEN_WEATHER_API_KEY", properties.getProperty("OPEN_WEATHER_API_KEY"))
+        buildConfigField("String", "MAPS_API_KEY", properties.getProperty("MAPS_API_KEY"))
+
+
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     dataBinding {
