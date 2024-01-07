@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.view.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/city_search_bar_ET"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        android:hint="@string/city_edit_text_hint"
-        app:layout_constraintEnd_toStartOf="@+id/search_button_BTN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="textSizeDataBinding"
+            type="Integer" />
+    </data>
 
-    <Button
-        android:id="@+id/search_button_BTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/search"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <TextView
-        android:id="@+id/weather_info_TV"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/city_search_bar_ET"
-        tools:text="Weather information" />
+        android:layout_height="match_parent"
+        tools:context=".ui.view.MainActivity">
+
+        <EditText
+            android:id="@+id/city_search_bar_ET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            android:hint="@string/city_edit_text_hint"
+            app:layout_constraintEnd_toStartOf="@+id/search_button_BTN"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/search_button_BTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/search"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/weather_info_TV"
+            android:layout_width="match_parent"
+            textSizeAdapter="@{textSizeDataBinding}"
+            android:layout_height="400dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/city_search_bar_ET"
+            tools:text="Weather information" />
 
         <fragment
             android:id="@+id/google_map_FG"
@@ -54,5 +63,5 @@
             app:layout_constraintTop_toBottomOf="@+id/weather_info_TV"
             app:layout_constraintBottom_toBottomOf="parent"
             />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.MovementMethod
 import android.text.method.ScrollingMovementMethod
+import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.view.marginTop
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
+import androidx.databinding.BindingAdapter
 import com.example.algarweatherapp.R
 import com.example.algarweatherapp.databinding.ActivityMainBinding
 import com.example.algarweatherapp.ui.viewModel.WeatherInformationViewModel
@@ -40,6 +44,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         setUpListeners()
         setUpUIConfigurations()
         setUpObservers()
+
+        binding.textSizeDataBinding = 20
+
+
     }
 
     override fun onMapReady(mMap: GoogleMap) {

@@ -40,10 +40,6 @@ android {
         enable = true
     }
 
-    viewBinding {
-        enable = true
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
