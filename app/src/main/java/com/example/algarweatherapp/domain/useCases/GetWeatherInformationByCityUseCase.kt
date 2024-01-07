@@ -21,6 +21,7 @@ class GetWeatherInformationByCityUseCase @Inject constructor(
 
         val apiResponse: NetworkResult<WeatherInformationResponseModel> =
             getWeatherInformationByCityRepository.getWeatherInformationByCityApi(cityName)
+
         return when (apiResponse) {
             is NetworkResult.ApiSuccess -> {
                 saveWeatherInformationUseCase(apiResponse.data.toDomain())

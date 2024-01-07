@@ -9,6 +9,15 @@ import com.example.algarweatherapp.data.database.entities.WeatherEntity
 import com.example.algarweatherapp.data.database.entities.WeatherInformationEntity
 import com.example.algarweatherapp.data.database.entities.WeatherListHolderEntity
 import com.example.algarweatherapp.data.database.entities.WindEntity
+import com.example.algarweatherapp.domain.domainDataModel.Clouds
+import com.example.algarweatherapp.domain.domainDataModel.Coord
+import com.example.algarweatherapp.domain.domainDataModel.Main
+import com.example.algarweatherapp.domain.domainDataModel.Rain
+import com.example.algarweatherapp.domain.domainDataModel.Sys
+import com.example.algarweatherapp.domain.domainDataModel.Weather
+import com.example.algarweatherapp.domain.domainDataModel.WeatherInformationResponse
+import com.example.algarweatherapp.domain.domainDataModel.WeatherListHolder
+import com.example.algarweatherapp.domain.domainDataModel.Wind
 import com.google.gson.annotations.SerializedName
 
 
@@ -78,6 +87,7 @@ data class WeatherListHolderModel(
     val weatherModelList: List<WeatherModel>
 )
 
+//From Entity to Model
 fun WeatherInformationEntity.toModel() = WeatherInformationResponseModel(
     id = cityId,
     name = cityName,
@@ -132,5 +142,64 @@ fun SysEntity.toModel() = SysModel(
 )
 
 fun WeatherListHolderEntity.toModel() = WeatherListHolderModel(
+    weatherModelList = weatherList.map { it.toModel() }
+)
+
+//From Domain to Model
+
+fun WeatherInformationResponse.toModel() = WeatherInformationResponseModel(
+    id = id,
+    name = name,
+    coord = coord.toModel(),
+    weather = weather.map { it.toModel() },
+    clouds = clouds.toModel(),
+    base = base,
+    cod = cod,
+    main = main.toModel(),
+    rain = rain.toModel(),
+    sys = sys.toModel(),
+    dt = dt,
+    timezone = timezone,
+    wind = wind.toModel(),
+    visibility = visibility
+)
+
+fun Coord.toModel() = CoordModel(
+    lon = lon,
+    lat = lat
+)
+
+fun Weather.toModel() = WeatherModel(
+    id = id, main = main, description = description, icon = icon
+)
+
+fun Main.toModel() = MainModel(
+    temp = temp,
+    feelsLike = feelsLike,
+    tempMin = tempMin,
+    tempMax = tempMax,
+    pressure = pressure,
+    humidity = humidity,
+    seaLevel = seaLevel,
+    groundLevel = groundLevel
+)
+
+fun Wind.toModel() = WindModel(
+    speed = speed, deg = deg, gust = gust
+)
+
+fun Rain.toModel() = RainModel(
+    rain1h = rain1h
+)
+
+fun Clouds.toModel() = CloudsModel(
+    all = all
+)
+
+fun Sys.toModel() = SysModel(
+    type = type, id = id, country = country, sunrise = sunrise
+)
+
+fun WeatherListHolder.toModel() = WeatherListHolderModel(
     weatherModelList = weatherList.map { it.toModel() }
 )

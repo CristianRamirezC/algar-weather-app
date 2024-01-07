@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment: SupportMapFragment =
             supportFragmentManager.findFragmentById(R.id.google_map_FG) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        
+
         setUpListeners()
         setUpUIConfigurations()
         setUpObservers()

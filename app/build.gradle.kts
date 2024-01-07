@@ -67,7 +67,7 @@ dependencies {
     val lifecycle_version = "2.6.2"
     val hilt_version = "2.48"
     val room_version = "2.6.1"
-    val mockk_Version = "1.13.8"
+    val mockk_Version = "1.12.2"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -109,7 +109,8 @@ dependencies {
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    testImplementation("io.mockk:mockk:$mockk_Version")
+
+    //Mockk
     testImplementation("io.mockk:mockk:$mockk_Version")
 
 }
