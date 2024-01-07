@@ -42,11 +42,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         setUpListeners()
-        setUpUIConfigurations()
         setUpObservers()
 
         binding.textSizeDataBinding = 20
-
 
     }
 
@@ -80,10 +78,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun setUpUIConfigurations() {
-        binding.weatherInfoTV.movementMethod = ScrollingMovementMethod()
-    }
-
     private fun setUpObservers() {
         weatherInformationViewModel.searchButtonEnable.observe(this) {
             binding.searchButtonBTN.isEnabled = it
@@ -92,9 +86,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setUpOnMapReadyObservers(mMap: GoogleMap) {
         weatherInformationViewModel.weatherInformation.observe(this) {
-            binding.weatherInfoTV.text = it.toString()
-
             if (it.id != 0) {
+                binding.cityNameTV.text = it.name
+                binding.cityWeatherTV.text = it.weather.first().main
+
                 val cityLatLng: LatLng = LatLng(it.coord.lat, it.coord.lon)
                 mMap.addMarker(
                     MarkerOptions()

@@ -40,15 +40,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/weather_info_TV"
-            android:layout_width="match_parent"
-            textSizeAdapter="@{textSizeDataBinding}"
-            android:layout_height="400dp"
+            android:id="@+id/city_name_TV"
+            android:layout_width="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
-            android:scrollbars="vertical"
+            textSizeAdapter="@{textSizeDataBinding}"
             app:layout_constraintTop_toBottomOf="@+id/city_search_bar_ET"
-            tools:text="Weather information" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Pereira"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/city_weather_TV"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            textSizeAdapter="@{textSizeDataBinding}"
+            app:layout_constraintTop_toBottomOf="@+id/city_name_TV"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Nublado"
+            android:layout_height="wrap_content"/>
+
 
         <fragment
             android:id="@+id/google_map_FG"
@@ -59,8 +71,7 @@
             map:cameraZoom="10"
             map:uiRotateGestures="false"
             map:uiZoomControls="true"
-
-            app:layout_constraintTop_toBottomOf="@+id/weather_info_TV"
+            app:layout_constraintTop_toBottomOf="@+id/city_weather_TV"
             app:layout_constraintBottom_toBottomOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
