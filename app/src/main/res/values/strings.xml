@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Algar Weather App</string>
+    <string name="city_edit_text_hint">Enter the name of a city</string>
+    <string name="search">Search</string>
 </resources>
