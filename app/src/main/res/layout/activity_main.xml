@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
+        android:inputType="text"
         android:hint="@string/city_edit_text_hint"
         app:layout_constraintEnd_toStartOf="@+id/search_button_BTN"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +33,11 @@
     <TextView
         android:id="@+id/weather_info_TV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@+id/city_search_bar_ET"
         tools:text="Weather information" />
 

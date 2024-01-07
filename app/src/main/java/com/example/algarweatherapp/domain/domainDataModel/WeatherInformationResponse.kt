@@ -18,16 +18,16 @@ import com.example.algarweatherapp.data.model.WeatherModel
 import com.example.algarweatherapp.data.model.WindModel
 
 data class WeatherInformationResponse(
-    val coordModel: Coord = Coord(),
-    val weatherModel: List<Weather> = emptyList(),
+    val coord: Coord = Coord(),
+    val weather: List<Weather> = emptyList(),
     val base: String = "",
-    val mainModel: Main = Main(),
+    val main: Main = Main(),
     val visibility: Int = 0,
-    val windModel: Wind = Wind(),
-    val rainModel: Rain = Rain(),
-    val cloudsModel: Clouds = Clouds(),
+    val wind: Wind = Wind(),
+    val rain: Rain = Rain(),
+    val clouds: Clouds = Clouds(),
     val dt: Int = 0,
-    val sysModel: Sys = Sys(),
+    val sys: Sys = Sys(),
     val timezone: Int = 0,
     val id: Int = 0,
     val name: String = "",
@@ -79,21 +79,25 @@ data class Sys(
     val sunset: Int = 0
 )
 
+data class WeatherListHolder(
+    val weatherList: List<Weather>
+)
+
 //Entities to Domain mappers
 fun WeatherInformationEntity.toDomain() = WeatherInformationResponse(
     id = cityId,
     name = cityName,
-    coordModel = coord.toDomain(),
-    weatherModel = weatherList.weatherList.map { it.toDomain() },
-    cloudsModel = clouds.toDomain(),
+    coord = coord.toDomain(),
+    weather = weatherList.weatherList.map { it.toDomain() },
+    clouds = clouds.toDomain(),
     base = base,
     cod = cod,
-    mainModel = main.toDomain(),
-    rainModel = rain.toDomain(),
-    sysModel = sys.toDomain(),
+    main = main.toDomain(),
+    rain = rain.toDomain(),
+    sys = sys.toDomain(),
     dt = dt,
     timezone = timezone,
-    windModel = wind.toDomain(),
+    wind = wind.toDomain(),
     visibility = visibility
 )
 
@@ -137,17 +141,17 @@ fun SysEntity.toDomain() = Sys(
 fun WeatherInformationResponseModel.toDomain() = WeatherInformationResponse(
     id = id,
     name = name,
-    coordModel = coord.toDomain(),
-    weatherModel = weather.map { it.toDomain() },
-    cloudsModel = clouds.toDomain(),
+    coord = coord.toDomain(),
+    weather = weather.map { it.toDomain() },
+    clouds = clouds.toDomain(),
     base = base,
     cod = cod,
-    mainModel = main.toDomain(),
-    rainModel = rain.toDomain(),
-    sysModel = sys.toDomain(),
+    main = main.toDomain(),
+    rain = rain.toDomain(),
+    sys = sys.toDomain(),
     dt = dt,
     timezone = timezone,
-    windModel = wind.toDomain(),
+    wind = wind.toDomain(),
     visibility = visibility
 )
 

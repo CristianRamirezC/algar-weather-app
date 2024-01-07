@@ -13,6 +13,15 @@ import com.example.algarweatherapp.data.model.WeatherModel
 import com.example.algarweatherapp.data.model.WeatherInformationResponseModel
 import com.example.algarweatherapp.data.model.WeatherListHolderModel
 import com.example.algarweatherapp.data.model.WindModel
+import com.example.algarweatherapp.domain.domainDataModel.Clouds
+import com.example.algarweatherapp.domain.domainDataModel.Coord
+import com.example.algarweatherapp.domain.domainDataModel.Main
+import com.example.algarweatherapp.domain.domainDataModel.Rain
+import com.example.algarweatherapp.domain.domainDataModel.Sys
+import com.example.algarweatherapp.domain.domainDataModel.Weather
+import com.example.algarweatherapp.domain.domainDataModel.WeatherInformationResponse
+import com.example.algarweatherapp.domain.domainDataModel.WeatherListHolder
+import com.example.algarweatherapp.domain.domainDataModel.Wind
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "weather_information_table")
@@ -140,6 +149,67 @@ fun SysModel.toEntity() = SysEntity(
 
 fun WeatherListHolderModel.toEntity() = WeatherListHolderEntity(
     weatherList = weatherModelList.map { it.toEntity() }
+)
+
+
+//Domain to Entity
+
+fun WeatherInformationResponse.toEntity() =
+    WeatherInformationEntity(
+        cityId = id,
+        cityName = name,
+        coord = coord.toEntity(),
+        weatherList = WeatherListHolder(weather).toEntity(),
+        base = base,
+        main = main.toEntity(),
+        visibility = visibility,
+        wind = wind.toEntity(),
+        rain = rain.toEntity(),
+        clouds = clouds.toEntity(),
+        dt = dt,
+        sys = sys.toEntity(),
+        timezone = timezone,
+        cod = cod
+    )
+
+fun Coord.toEntity() = CoordEntity(
+    lon = lon,
+    lat = lat
+)
+
+fun Weather.toEntity() = WeatherEntity(
+    id = id, main = main, description = description, icon = icon
+)
+
+fun Main.toEntity() = MainEntity(
+    temp = temp,
+    feelsLike = feelsLike,
+    tempMin = tempMin,
+    tempMax = tempMax,
+    pressure = pressure,
+    humidity = humidity,
+    seaLevel = seaLevel,
+    groundLevel = groundLevel
+)
+
+fun Wind.toEntity() = WindEntity(
+    speed = speed, deg = deg, gust = gust
+)
+
+fun Rain.toEntity() = RainEntity(
+    rain1h = rain1h
+)
+
+fun Clouds.toEntity() = CloudsEntity(
+    all = all
+)
+
+fun Sys.toEntity() = SysEntity(
+    type = type, id = id, country = country, sunrise = sunrise, sunset = sunset
+)
+
+fun WeatherListHolder.toEntity() = WeatherListHolderEntity(
+    weatherList = weatherList.map { it.toEntity() }
 )
 
 

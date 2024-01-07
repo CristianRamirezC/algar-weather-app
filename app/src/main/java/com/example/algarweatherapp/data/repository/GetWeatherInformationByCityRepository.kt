@@ -3,6 +3,7 @@ package com.example.algarweatherapp.data.repository
 import android.util.Log
 import com.example.algarweatherapp.core.utils.HandleApi
 import com.example.algarweatherapp.data.database.dao.WeatherDao
+import com.example.algarweatherapp.data.database.entities.WeatherInformationEntity
 import com.example.algarweatherapp.data.model.NetworkResult
 import com.example.algarweatherapp.data.model.WeatherInformationResponseModel
 import com.example.algarweatherapp.data.model.toModel
@@ -21,6 +22,7 @@ class GetWeatherInformationByCityRepository @Inject constructor(
     }
 
     suspend fun getWeatherInformationByCityDB(city: String): WeatherInformationResponseModel {
-        return weatherDao.getWeatherInformationByCity(city).toModel()
+        val response = weatherDao.getWeatherInformationByCity(city)
+        return response.toModel()
     }
 }

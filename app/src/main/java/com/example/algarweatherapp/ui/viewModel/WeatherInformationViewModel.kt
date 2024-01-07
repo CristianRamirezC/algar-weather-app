@@ -10,6 +10,7 @@ import com.example.algarweatherapp.domain.useCases.GetWeatherInformationByCityUs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +32,7 @@ class WeatherInformationViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val weatherInformation: WeatherInformationResponse =
-                    getWeatherInformationByCityUseCase(cityName)
+                    getWeatherInformationByCityUseCase(cityName.capitalize(Locale.ROOT))
                 _weatherInformation.postValue(weatherInformation)
             } catch (e: Exception) {
                 Log.e("getWeatherInformationByCityException", e.stackTraceToString())
