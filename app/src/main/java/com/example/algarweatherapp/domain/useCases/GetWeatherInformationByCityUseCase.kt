@@ -23,11 +23,13 @@ class GetWeatherInformationByCityUseCase @Inject constructor(
             getWeatherInformationByCityRepository.getWeatherInformationByCityApi(cityName)
 
         return when (apiResponse) {
+            //if successful, saves the response on db and returns data
             is NetworkResult.ApiSuccess -> {
                 saveWeatherInformationUseCase(apiResponse.data.toDomain())
                 apiResponse.data.toDomain()
             }
 
+            //if api error, tries to fetch data from db
             is NetworkResult.ApiError -> {
                 getWeatherInformationByCityBBDD(cityName)
             }
@@ -38,6 +40,7 @@ class GetWeatherInformationByCityUseCase @Inject constructor(
         }
     }
 
+    /** fetch weather data by city from the db **/
     private suspend fun getWeatherInformationByCityBBDD(cityName: String): WeatherInformationResponse {
         return getWeatherInformationByCityRepository.getWeatherInformationByCityDB(cityName)
             .toDomain()

@@ -8,6 +8,7 @@ class SaveWeatherInformationRepository @Inject constructor(
     private val weatherDao: WeatherDao
 ) {
 
+    /** save a WeatherInformationEntity in the db using room **/
     suspend fun saveWeatherInformationDDBB(weatherInfo: WeatherInformationEntity) {
         weatherDao.insertWeatherInformation(weatherInfo)
     }

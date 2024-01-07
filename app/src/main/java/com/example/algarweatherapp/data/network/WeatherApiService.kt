@@ -8,6 +8,7 @@ class WeatherApiService @Inject constructor(
     private val weatherApiClient: WeatherApiClient
 ) {
 
+    /** fetch weather data by city from openweathermap.org api **/
     suspend fun getWeatherInformationByCity(
         city: String,
     ): Response<WeatherInformationResponseModel> {
