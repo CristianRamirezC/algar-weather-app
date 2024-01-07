@@ -10,6 +10,7 @@ class SaveWeatherInformationUseCase @Inject constructor(
     private val saveWeatherInformationRepository: SaveWeatherInformationRepository
 ) {
 
+    /** saves a weatherInformationResponse on the db **/
     suspend operator fun invoke(weatherInfo: WeatherInformationResponse) {
         try {
             saveWeatherInformationRepository.saveWeatherInformationDDBB(weatherInfo.toEntity())

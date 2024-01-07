@@ -15,12 +15,14 @@ class GetWeatherInformationByCityRepository @Inject constructor(
     private val weatherDao: WeatherDao
 ) {
 
+    /** fetch weather data by city from api **/
     suspend fun getWeatherInformationByCityApi(city: String): NetworkResult<WeatherInformationResponseModel> {
         return HandleApi.handleGetApi(city) {
             weatherApiService.getWeatherInformationByCity(it!!)
         }
     }
 
+    /** fetch weather data by city from db **/
     suspend fun getWeatherInformationByCityDB(city: String): WeatherInformationResponseModel {
         val response = weatherDao.getWeatherInformationByCity(city)
         return response.toModel()

@@ -4,6 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import com.example.algarweatherapp.BuildConfig
 
+/** api call interceptor to add the openweathermap.org api key in the query params **/
 class TokenInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var originalRequest = chain.request()
